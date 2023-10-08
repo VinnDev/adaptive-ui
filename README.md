@@ -1,2 +1,2 @@
 # adaptive-ui
-A highly opinionated solution to quickly build data-driven web prototypes
+A highly opinionated solution to quickly scaffold data-driven web prototypes

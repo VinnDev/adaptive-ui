@@ -4,4 +4,5 @@
   @media (max-width: $mantine-breakpoint-xl) {
     display: none;
   }
+  transition: all 150ms ease;
 }

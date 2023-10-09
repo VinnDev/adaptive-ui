@@ -29,7 +29,7 @@ export const DotsBackground = ({
     const left =
       seedrandom(`${seed}-${index}`)() > 0.5
         ? randNum(`left-${index}`, 0, width * 0.25)
-        : randNum(`left-${index}`, width * 0.75, width - 185);
+        : randNum(`left-${index}`, width * 0.75, width - 200);
 
     return <Dots key={index} top={top} left={left} />;
   });

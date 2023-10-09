@@ -1,13 +1,13 @@
-import classes from "./SectionHeader.module.css";
+import classes from "./Heading.module.css";
 
 import { Title } from "@mantine/core";
 
-interface SectionHeaderProps {
+interface HeadingProps {
   text: string;
   highlight?: string;
 }
 
-export const SectionHeader = ({ text, highlight }: SectionHeaderProps) => {
+export const Heading = ({ text, highlight }: HeadingProps) => {
   return (
     <Title order={3} className={classes.title}>
       {highlight

@@ -1,6 +1,6 @@
 # adaptive-ui
 
-A highly opinionated extension for Mantine to quickly scaffold data-driven web prototypes
+A highly opinionated wrapper for Mantine to quickly scaffold data-driven web prototypes
 
 ## Installation
 

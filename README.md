@@ -14,31 +14,23 @@ Internally, adaptive-ui uses [Mantine](https://mantine.dev/) components and css 
 ## Example
 
 ```tsx
-const Logo = () => {
-  /* ... */
-};
-
 const links = [
   /* ... */
 ];
 
 export default function Index() {
+  const Logo = <Heading text="plexi.dev" highlight="plexi" /* TODO */ />;
+
   return (
     <AdaptiveLayout dots={{ seed: "abcd" }}>
-      <Header
-        logo={<Heading text="plexi.dev" highlight="plexi" /* TODO */ />}
-        links={links}
-      />
+      <Header logo={<Logo />} links={links} />
       <Hero /* TODO */ />
       <List /* TODO */ />
       <Heading text="Meet The Team" highlight="Team" />
       <UserGrid /* TODO */ />
       <Heading text="Major Projects" highlight="Projects" />
       <CardGrid /* TODO */ />
-      <Footer
-        logo={<Heading text="plexi.dev" highlight="plexi" /* TODO */ />}
-        links={links}
-      />
+      <Footer logo={<Logo />} links={links} />
     </AdaptiveLayout>
   );
 }

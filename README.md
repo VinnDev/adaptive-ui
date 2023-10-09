@@ -9,4 +9,4 @@ A highly opinionated extension for Mantine to quickly scaffold data-driven web p
 
 ## Styling
 
-Internally, adaptive-ui uses [Mantine](https://mantine.dev/) components. You can override the default styling by passing your own theme in the `MantineProvider`.
+Internally, adaptive-ui uses [Mantine](https://mantine.dev/) components and css variables. You can override the default styling by passing your own via the `MantineProvider` component.

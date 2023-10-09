@@ -5,7 +5,7 @@ interface DotsProps {
   radius?: number;
   left?: number;
   right?: number;
-  top?: number;
+  top?: number | string;
   bottom?: number;
   className?: string;
 }

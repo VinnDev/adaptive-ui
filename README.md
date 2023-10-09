@@ -7,7 +7,6 @@ A highly opinionated extension for Mantine to quickly scaffold data-driven web p
 1. Navigate to your React project's `/components/` directory
 2. Run `git submodule add https://github.com/lorencerri/adaptive-ui`
 
-## Tested Compatibility
+## Styling
 
-- `Mantine@7.1.0`
-- `Remix@2.0.1`
+Internally, adaptive-ui uses [Mantine](https://mantine.dev/) components. You can override the default styling by passing your own theme in the `MantineProvider`.

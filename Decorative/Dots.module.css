@@ -1,0 +1,7 @@
+.dots {
+  position: absolute;
+  color: var(--mantine-color-dark-5);
+  @media (max-width: $mantine-breakpoint-xl) {
+    display: none;
+  }
+}

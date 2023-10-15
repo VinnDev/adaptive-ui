@@ -21,6 +21,8 @@ import {
   IconArrowBadgeUpFilled,
   IconHandClick,
   IconHourglass,
+  IconMap,
+  IconMenu2,
   IconRefresh,
 } from "@tabler/icons-react";
 
@@ -30,6 +32,7 @@ interface GameButtonProps {
   icon: ReactNode;
   action: "reset" | "input";
   input?: string;
+  repeatable?: boolean;
 }
 
 const INPUT_URL = "https://doom-api.plexidev.org/input/lorenplexidev";
@@ -62,6 +65,7 @@ export default function DoomGUI() {
     icon,
     action,
     input,
+    repeatable = true,
   }: GameButtonProps) => {
     return (
       <Button
@@ -72,9 +76,9 @@ export default function DoomGUI() {
         onClick={async () => {
           if (action === "reset" || !input) await axios(`${INPUT_URL}/reset`);
           else {
-            const uri = `${INPUT_URL}/append?keys=${input.repeat(
-              Number(repeat)
-            )}`;
+            let uri = `${INPUT_URL}/append?keys=`;
+            if (repeatable) uri += input.repeat(Number(repeat));
+            else uri += input;
             await axios(uri);
           }
 
@@ -182,6 +186,22 @@ export default function DoomGUI() {
                 action="input"
                 icon={<IconHandClick width={18} />}
                 input="p,"
+              />
+              <GameButton
+                count={0}
+                text="Toggle Map"
+                action="input"
+                icon={<IconMap width={18} />}
+                input="t,"
+                repeatable={false}
+              />
+              <GameButton
+                count={0}
+                text="Toggle Menu"
+                action="input"
+                icon={<IconMenu2 width={18} />}
+                input="x,"
+                repeatable={false}
               />
             </Group>
           </Fieldset>

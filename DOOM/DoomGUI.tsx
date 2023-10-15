@@ -35,12 +35,13 @@ interface GameButtonProps {
   repeatable?: boolean;
 }
 
+const IMAGE_URL =
+  "https://doom-api.plexidev.org/frame/lorenplexidev/?type=.gif";
 const INPUT_URL = "https://doom-api.plexidev.org/input/lorenplexidev";
 const HOST =
   process.env.NODE_ENV === "development"
     ? "localhost:1999"
     : "doom-party.lorencerri.partykit.dev";
-
 const REPEAT_OPTIONS = [
   { label: "1x", value: "1" },
   { label: "5x", value: "5" },
@@ -124,9 +125,7 @@ const DoomGUI: React.FC = () => {
             <Badge variant="dot">TODO: Lobby System</Badge>
             <Badge variant="dot">TODO: Fix Frame Buffer</Badge>
           </Group>
-          <Image
-            src={`https://doom-api.plexidev.org/frame/lorenplexidev/?type=.gif&${seed}`}
-          />
+          <Image src={`${IMAGE_URL}&${seed}`} />
           <SegmentedControl
             value={repeat}
             onChange={setRepeat}

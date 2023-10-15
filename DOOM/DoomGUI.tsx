@@ -43,7 +43,7 @@ export default function DoomGUI() {
   const [seed, setSeed] = useState(Math.random());
   const [repeat, setRepeat] = useState("10");
 
-  usePartySocket({
+  const ws = usePartySocket({
     host:
       process.env.NODE_ENV === "development"
         ? "localhost:1999"
@@ -54,6 +54,8 @@ export default function DoomGUI() {
       console.log(e);
       if (data.action === "connectionCountUpdate") {
         setConnectionCount(data.connectionCount);
+      } else if (data.action === "screenUpdate") {
+        setSeed(Math.random());
       }
       setConnected(true);
     },
@@ -83,6 +85,7 @@ export default function DoomGUI() {
           }
 
           setSeed(Math.random());
+          ws.send(JSON.stringify({ action: "screenUpdate" }));
         }}
       >
         {text}

@@ -36,6 +36,18 @@ interface GameButtonProps {
 }
 
 const INPUT_URL = "https://doom-api.plexidev.org/input/lorenplexidev";
+const HOST =
+  process.env.NODE_ENV === "development"
+    ? "localhost:1999"
+    : "doom-party.lorencerri.partykit.dev";
+
+const REPEAT_OPTIONS = [
+  { label: "1x", value: "1" },
+  { label: "5x", value: "5" },
+  { label: "10x", value: "10" },
+  { label: "25x", value: "25" },
+  { label: "50x", value: "50" },
+];
 
 const DoomGUI: React.FC = () => {
   const [connected, setConnected] = useState(false);
@@ -44,19 +56,20 @@ const DoomGUI: React.FC = () => {
   const [repeat, setRepeat] = useState("10");
 
   const ws = usePartySocket({
-    host:
-      process.env.NODE_ENV === "development"
-        ? "localhost:1999"
-        : "doom-party.lorencerri.partykit.dev",
+    host: HOST,
     room: "doom",
     onMessage(e) {
       const data = JSON.parse(e.data);
-      console.log(e);
-      if (data.action === "connectionCountUpdate") {
-        setConnectionCount(data.connectionCount);
-      } else if (data.action === "screenUpdate") {
-        setSeed(Math.random());
+
+      switch (data.action) {
+        case "connectionCountUpdate":
+          setConnectionCount(data.connectionCount);
+          break;
+        case "screenUpdate":
+          setSeed(Math.random());
+          break;
       }
+
       setConnected(true);
     },
   });
@@ -117,13 +130,7 @@ const DoomGUI: React.FC = () => {
           <SegmentedControl
             value={repeat}
             onChange={setRepeat}
-            data={[
-              { label: "1x", value: "1" },
-              { label: "5x", value: "5" },
-              { label: "10x", value: "10" },
-              { label: "25x", value: "25" },
-              { label: "50x", value: "50" },
-            ]}
+            data={REPEAT_OPTIONS}
           />
           <Fieldset legend="Meta">
             <Group>

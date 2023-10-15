@@ -1,4 +1,6 @@
-import classes from "./DoomGUI.module.css";
+import React, { useState } from "react";
+import axios from "axios";
+import usePartySocket from "partysocket/react";
 import {
   Badge,
   Center,
@@ -10,9 +12,6 @@ import {
   Fieldset,
   Button,
 } from "@mantine/core";
-import usePartySocket from "partysocket/react";
-import { type ReactNode, useState } from "react";
-import axios from "axios";
 import {
   IconArcheryArrow,
   IconArrowBadgeDownFilled,
@@ -25,11 +24,12 @@ import {
   IconMenu2,
   IconRefresh,
 } from "@tabler/icons-react";
+import classes from "./DoomGUI.module.css";
 
 interface GameButtonProps {
   count: number;
   text: string;
-  icon: ReactNode;
+  icon: React.ReactNode;
   action: "reset" | "input";
   input?: string;
   repeatable?: boolean;
@@ -37,7 +37,7 @@ interface GameButtonProps {
 
 const INPUT_URL = "https://doom-api.plexidev.org/input/lorenplexidev";
 
-export default function DoomGUI() {
+const DoomGUI: React.FC = () => {
   const [connected, setConnected] = useState(false);
   const [connectionCount, setConnectionCount] = useState(0);
   const [seed, setSeed] = useState(Math.random());
@@ -61,14 +61,14 @@ export default function DoomGUI() {
     },
   });
 
-  const GameButton = ({
+  const GameButton: React.FC<GameButtonProps> = ({
     count,
     text,
     icon,
     action,
     input,
     repeatable = true,
-  }: GameButtonProps) => {
+  }) => {
     return (
       <Button
         leftSection={count === 0 ? " 0 " : String(count)}
@@ -212,4 +212,6 @@ export default function DoomGUI() {
       </Center>
     </Container>
   );
-}
+};
+
+export default DoomGUI;

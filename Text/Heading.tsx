@@ -14,7 +14,7 @@ export const Heading = ({ text, highlight }: HeadingProps) => {
         ? text.split(" ").map((word, index) =>
             word.toLowerCase() === highlight.toLowerCase() ? (
               <span key={index} className="highlight">
-                {word}
+                {word}{" "}
               </span>
             ) : (
               `${word} `

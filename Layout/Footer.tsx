@@ -6,7 +6,7 @@ import DoomGUI from "../DOOM/DoomGUI";
 
 interface FooterProps {
   logo: ReactNode;
-  links?: { to: string; url: string; label: string }[];
+  links?: { url: string; label: string }[];
 }
 
 export const Footer = ({ logo, links }: FooterProps) => {

@@ -13,7 +13,7 @@ import { useDisclosure } from "@mantine/hooks";
 
 interface CustomHeaderProps {
   logo: JSX.Element | string;
-  links?: { to: string; url: string; label: string }[];
+  links?: { url: string; label: string }[];
 }
 
 export const Header = ({ logo, links }: CustomHeaderProps) => {
@@ -21,26 +21,17 @@ export const Header = ({ logo, links }: CustomHeaderProps) => {
 
   const items =
       links &&
-      links.map((link) => {
-        if (link?.url) return (<a
+      links.map((link) => (
+        <a
           key={link.label}
           href={link.url}
-          target="_blank"
+          target={link.target || "_self"}
           rel="noopener noreferrer"
           className={classes.link}
         >
-         {link.label}
-        </a>);
-        return (<a
-          key={link.label}
-          href={link.to}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={classes.link}
-        >
-         {link.label}
-        </a>);
-      });
+          {link.label}
+        </a>
+      ));
   }
 
   return (

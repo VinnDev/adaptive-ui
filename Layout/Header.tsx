@@ -19,13 +19,10 @@ interface CustomHeaderProps {
 export const Header = ({ logo, links }: CustomHeaderProps) => {
   const [opened, { toggle }] = useDisclosure(false);
 
-  var items;
-  
-  if (links?.url) {
-    items =
+  const items =
       links &&
-      links.map((link) => (
-        <a
+      links.map((link) => {
+        if (link?.url) return (<a
           key={link.label}
           href={link.url}
           target="_blank"
@@ -33,20 +30,15 @@ export const Header = ({ logo, links }: CustomHeaderProps) => {
           className={classes.link}
         >
          {link.label}
-        </a>
-      ));
-  } else {
-    items =
-      links &&
-      links.map((link) => (
-        <a
+        </a>);
+        else return (<a
           key={link.label}
-          href={link.url}
+          href={link.to}
           className={classes.link}
         >
          {link.label}
-        </a>
-      ));
+        </a>);
+      });
   }
 
   return (

@@ -13,7 +13,7 @@ import { useDisclosure } from "@mantine/hooks";
 
 interface CustomHeaderProps {
   logo: JSX.Element | string;
-  links?: { url: string; label: string }[];
+  links?: { url: string; label: string; target: string }[];
 }
 
 export const Header = ({ logo, links }: CustomHeaderProps) => {

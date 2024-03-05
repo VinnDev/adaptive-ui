@@ -32,7 +32,10 @@ export const Header = ({ logo, links }: CustomHeaderProps) => {
          {link.label}
         </a>);
         return (<a
+          key={link.label}
           href={link.to}
+          target="_blank"
+          rel="noopener noreferrer"
           className={classes.link}
         >
          {link.label}

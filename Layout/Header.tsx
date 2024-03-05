@@ -23,9 +23,9 @@ export const Header = ({ logo, links }: CustomHeaderProps) => {
       links &&
       links.map((link) => (
         <a
-          key={link.label}
+          //key={link.label}
           href={link.url}
-          rel="noopener noreferrer"
+          //rel="noopener noreferrer"
           className={classes.link}
         >
           {link.label}

@@ -34,6 +34,7 @@ export const Header = ({ logo, links }: CustomHeaderProps) => {
         else return (<a
           key={link.label}
           href={link.to}
+          target="_blank"
           className={classes.link}
         >
          {link.label}
